@@ -1,10 +1,13 @@
 <template>
     <menu>
-        <li @click="handleClick" :class="{ 'icon-slide': !menuOpen }">
-            <img src="/icons/add_task.svg" alt="add task" />
+        <li @click="deleteTask" :class="{ 'icon-slide': !menuOpen }">
+            <img src="/icons/delete_task.svg" alt="delete tasks" />
         </li>
         <li @click="resetTodos" :class="{ 'icon-slide': !menuOpen }">
             <img src="/icons/reset_tasks.svg" alt="reset tasks" />
+        </li>
+        <li @click="addTask" :class="{ 'icon-slide': !menuOpen }">
+            <img src="/icons/add_task.svg" alt="add task" />
         </li>
         <li>
             <img @click="menuOpen = !menuOpen" src="/icons/hamburger.svg" alt="hamburger menu" />
@@ -19,8 +22,12 @@ import { useTodoStore } from "@/store/index";
 const menuOpen = ref<boolean>(false);
 
 const store = useTodoStore();
-const handleClick = () => {
-    store.editingNewTodo = true;
+
+const deleteTask = () => {
+    store.deleteActive = !store.deleteActive;
+}
+const addTask = () => {
+    store.editingNewTodo = !store.editingNewTodo;
 }
 
 const resetTodos = () => {
@@ -54,10 +61,14 @@ menu {
             right: calc(100% - 1rem - 2rem);
         }
         &:nth-of-type(2) {
-            right: 50%;
+            right: 65%;
             transform: translateX(50%);
         }
         &:nth-of-type(3) {
+            right: 35%;
+            transform: translateX(50%);
+        }
+        &:nth-of-type(4) {
             right: 1rem;
         }
         img {

@@ -1,10 +1,17 @@
 <template>
-    <div @click="handleClick" class="todo-item">
-        <p>{{ props.title }}</p>
-        <div class="checkbox">
+    <div @click="handleToggle" class="todo-item">
+        <p :class="{ 'is-done-text': props.done }">{{ props.title }}</p>
+        <div v-if="!store.deleteActive" class="checkbox">
             <input type="checkbox" />
             <span class="check" :class="{ 'is-done': props.done }"></span>
         </div>
+        <img
+            @click="handleDelete"
+            class="delete-icon"
+            v-else
+            src="/icons/delete_task.svg"
+            alt="delete todo"
+        />
     </div>
 </template>
 
@@ -21,21 +28,31 @@ interface Props {
 const store = useTodoStore();
 const props = defineProps<Props>();
 
-
-const handleClick = () => {
-    store.toggleDone(props.id);
+const handleToggle = () => {
+    if (!store.deleteActive) {
+        store.toggleDone(props.id);
+    }
     if (checkCompleted()) {
         store.modalActive = true;
     }
 }
 
-const checkCompleted = (): boolean => {
+const handleDelete = () => {
+    store.deleteTodo(props.id)
+}
+
+const checkCompleted = (): boolean | void => {
+
+    if (store.deleteActive) {
+        return
+    }
     let temp = store.todos.find((todo) => {
         return todo.done === false
     })
     // temp returns a todo or undefined
-    // tasks are completed if all tasks.done are true
-    return temp ? false : true;
+    // tasks are completed if all tasks.done are true so temp == undefined
+    return temp ? false : true
+
 
 }
 </script>
@@ -45,6 +62,10 @@ const checkCompleted = (): boolean => {
 $todo-font-size: 1.3rem;
 .is-done::before {
     content: " \2713 ";
+}
+.is-done-text {
+    opacity: 0.6;
+    text-decoration: line-through;
 }
 .todo-item {
     position: relative;
@@ -62,6 +83,9 @@ $todo-font-size: 1.3rem;
         font-weight: 500;
         color: $font-color;
         width: 100%;
+    }
+    .delete-icon {
+        height: $todo-font-size;
     }
 
     .checkbox {

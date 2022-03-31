@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="handleSubmit" class="new-todo">
-        <input ref="todoinput" type="text" v-model="newTodoText" />
+        <input required ref="todoinput" type="text" v-model="newTodoText" />
     </form>
 </template>
 
@@ -9,9 +9,7 @@ import { useTodoStore } from "@/store/index";
 import { ref, onMounted } from "vue";
 import type Todo from "@/types/Todo";
 
-
 const store = useTodoStore();
-
 
 const todoinput = ref()
 onMounted(() => {
@@ -28,7 +26,7 @@ const handleSubmit = (): void => {
     }
     store.addTodo(todo);
     newTodoText.value = '';
-    store.editingNewTodo = false;
+    // store.editingNewTodo = false;
 }
 </script>
 

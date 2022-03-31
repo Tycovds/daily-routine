@@ -13,6 +13,10 @@ import NavBar from "@/components/NavBar.vue";
 <style lang="scss">
 @import "@/assets/globals.scss";
 
+html,
+body {
+  overflow-x: hidden;
+}
 #app {
   background-color: $bg-color;
   width: 100vw;

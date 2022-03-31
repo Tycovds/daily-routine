@@ -43,7 +43,7 @@ const todos = computed(() => {
 .list-enter-from,
 .list-leave-to {
     opacity: 0;
-    transform: translateX(-5rem);
+    transform: translateX(-4rem);
 }
 .list-leave-active {
     position: absolute;
