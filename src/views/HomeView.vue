@@ -1,18 +1,32 @@
+<script setup lang="ts">
+import { defineComponent } from "@vue/runtime-core";
+import TodoList from "../components/todos/todoList.vue";
+
+</script>
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <main>
+    <h1>Carpe diem, Sabylla!</h1>
+    <p>Hier zijn je taken.</p>
+
+    <TodoList />
+  </main>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<style lang="scss" scoped>
+@import "@/assets/globals.scss";
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
-</script>
+main {
+  padding: 1rem;
+
+  h1,
+  p {
+    color: $font-color;
+    font-family: "Poppins", sans-serif;
+  }
+
+  p {
+    opacity: 0.6;
+  }
+}
+</style>
