@@ -24,7 +24,6 @@ onMounted(() => {
         minutes = `0${minutes}`;
     }
     time.value = `${hours}:${minutes}`;
-    console.log('mounted')
 })
 
 const handleClose = () => {

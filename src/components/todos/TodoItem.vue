@@ -11,7 +11,6 @@
 <script setup lang="ts">
 import { useTodoStore } from "@/store/index";
 import { defineProps } from "vue"
-import type Todo from "@/types/Todo";
 interface Props {
     id: number,
     title: string,
