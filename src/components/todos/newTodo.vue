@@ -19,14 +19,14 @@ onMounted(() => {
 
 const newTodoText = ref<string>('');
 const handleSubmit = (): void => {
+
     const todo: Todo = {
-        id: Math.floor(Math.random() * 200 + 1),
+        id: new Date().getTime(),
         title: newTodoText.value,
         done: false
     }
     store.addTodo(todo);
     newTodoText.value = '';
-    // store.editingNewTodo = false;
 }
 </script>
 
