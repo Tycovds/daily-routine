@@ -73,14 +73,8 @@ const handleClose = () => {
     }
 
     button {
-        padding: 0.4rem 1rem;
-        border-radius: 3px;
-        font-weight: 600;
-        display: inline-block;
+        @include btn;
         margin-top: 2rem;
-        cursor: pointer;
-        font-size: 1rem;
-        outline: none;
     }
     .cancel {
         background: transparent;

@@ -8,7 +8,8 @@ export const useTodoStore = defineStore({
     todos: [{ id: 0, title: "Hond uitlaten", done: false }, { id: 1, title: "Was doen", done: false }, { id: 2, title: "Routine app maken", done: false }] as Todo[],
     editingNewTodo: false as boolean,
     modalActive: false as boolean,
-    deleteActive: false as boolean
+    deleteActive: false as boolean,
+    name: '' as string
   }),
   actions: {
     addTodo(todo: Todo) {
