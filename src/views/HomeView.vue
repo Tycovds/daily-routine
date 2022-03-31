@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { defineComponent } from "@vue/runtime-core";
 import TodoList from "../components/todos/todoList.vue";
+import FinishedModal from "@/components/FinishedModal.vue";
 
 </script>
 
 <template>
   <main>
+    <FinishedModal />
     <h1>Carpe diem, Sabylla!</h1>
     <p>Hier zijn je taken.</p>
 
