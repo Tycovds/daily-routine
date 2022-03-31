@@ -31,9 +31,7 @@ const addTask = () => {
 }
 
 const resetTodos = () => {
-    store.todos.forEach((todo) => {
-        todo.done = false;
-    })
+    store.resetTodos();
 }
 
 </script>

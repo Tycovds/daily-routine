@@ -6,6 +6,8 @@
 
         <p>Done all tasks by</p>
         <h2>{{ time }}</h2>
+        <button @click="handleClose" class="cancel">Cancel</button>
+        <button @click="() => { handleClose(); store.resetTodos() }" class="reset">Reset tasks</button>
     </div>
 </template>
 
@@ -45,6 +47,7 @@ const handleClose = () => {
         top: 1rem;
         right: 1rem;
         height: 1.5rem;
+        cursor: pointer;
     }
     h1,
     h2,
@@ -67,6 +70,29 @@ const handleClose = () => {
             margin-bottom: 2rem;
             opacity: 0.6;
         }
+    }
+
+    button {
+        padding: 0.4rem 1rem;
+        border-radius: 3px;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 2rem;
+        cursor: pointer;
+        font-size: 1rem;
+        outline: none;
+    }
+    .cancel {
+        background: transparent;
+        border: none;
+        box-shadow: inset 0 0 0 3px $main-color;
+        margin-right: 2rem;
+        color: $main-color;
+    }
+    .reset {
+        background-color: $main-color;
+        color: #222;
+        border: none;
     }
 }
 </style>
