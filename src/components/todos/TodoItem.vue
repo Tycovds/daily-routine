@@ -26,11 +26,9 @@ const props = defineProps<Props>();
 const handleClick = () => {
     store.toggleDone(props.id);
     if (checkCompleted()) {
-        console.log('finished all tasks!!!')
+        store.modalActive = true;
     }
-
 }
-
 
 const checkCompleted = (): boolean => {
     let temp = store.todos.find((todo) => {

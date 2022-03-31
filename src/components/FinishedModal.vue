@@ -1,5 +1,6 @@
 <template>
     <div class="modal">
+        <img @click="handleClose" id="close_modal" src="/icons/close_modal.svg" alt="close modal" />
         <h1>Good job!</h1>
         <p>Finished all task for today</p>
 
@@ -10,14 +11,25 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { useTodoStore } from "@/store/index";
+const store = useTodoStore();
+
 
 const time = ref<string>()
 onMounted(() => {
     const today = new Date();
     const hours = today.getHours();
-    const minutes = today.getMinutes();
+    let minutes: number | string = today.getMinutes();
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
     time.value = `${hours}:${minutes}`;
+    console.log('mounted')
 })
+
+const handleClose = () => {
+    store.modalActive = false;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -28,6 +40,13 @@ onMounted(() => {
     background-color: $accent-color;
     z-index: 5;
     padding: 1rem;
+
+    #close_modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        height: 1.5rem;
+    }
     h1,
     h2,
     p {

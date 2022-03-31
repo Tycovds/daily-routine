@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import TodoList from "../components/todos/todoList.vue";
 import FinishedModal from "@/components/FinishedModal.vue";
+import { useTodoStore } from "@/store";
+import { computed } from "@vue/reactivity";
 
+const store = useTodoStore();
+let isActive = computed(() => {
+  return store.modalActive;
+})
 </script>
 
 <template>
   <main>
-    <FinishedModal />
+    <FinishedModal v-if="isActive" />
     <h1>Carpe diem, Sabylla!</h1>
     <p>Hier zijn je taken.</p>
 
