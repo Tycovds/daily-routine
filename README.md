@@ -1,4 +1,6 @@
 # pwa-routine
+Basic todo app with reset functionality
+Made with Vue.js, Pinia as state management, Typescript(first time) and SCSS
 
 ## Project setup
 ```

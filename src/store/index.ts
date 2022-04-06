@@ -5,7 +5,7 @@ import type Todo from "../types/Todo";
 export const useTodoStore = defineStore({
   id: 'todos',
   state: () => ({
-    todos: [{ id: 0, title: "Hond uitlaten", done: false }, { id: 1, title: "Was doen", done: false }, { id: 2, title: "Routine app maken", done: false }] as Todo[],
+    todos: [] as Todo[],
     editingNewTodo: false as boolean,
     modalActive: false as boolean,
     deleteActive: false as boolean,
