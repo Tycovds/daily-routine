@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;600;700&family=Baloo+2:wght@400;600;700&family=Caveat:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg: #0e1a22;
+  --surface: #1b2f35;
+  --surface2: #16262c;
+  --ink: #f2f5f2;
+  --muted: #93a7ad;
+  --accent: #dfe0ab;
+  --onAccent: #12201b;
+  --danger: #e0785f;
+  --font: 'Marcellus', serif;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--onAccent);
+  --color-danger: var(--danger);
+  --font-theme: var(--font);
+  --font-meta: 'Manrope', sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(430px) rotate(540deg);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
