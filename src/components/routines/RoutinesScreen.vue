@@ -57,7 +57,7 @@ function addRoutine() {
       <p class="mt-1.5 font-meta text-[13px] text-muted">Pick when each one shows up. Every entry is one check.</p>
     </div>
 
-    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-4.5 pb-6">
+    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-4.5" style="padding-bottom: calc(6rem + env(safe-area-inset-bottom))">
       <div class="flex flex-col gap-2.5">
         <div v-for="r in store.routines" :key="r.id" class="rounded-2xl bg-surface p-3.5">
           <div class="flex items-center gap-2.5">

@@ -9,7 +9,10 @@ const tabs: { id: 'today' | 'routines'; label: string }[] = [
 </script>
 
 <template>
-  <div class="flex flex-none border-t px-4.5 pt-1.5 pb-2.5" style="background: var(--surface2); border-color: rgba(255,255,255,.06)">
+  <div
+    class="fixed inset-x-0 bottom-0 z-20 flex border-t px-4.5 pt-1.5"
+    style="background: var(--surface2); border-color: rgba(255,255,255,.06); padding-bottom: calc(0.625rem + env(safe-area-inset-bottom))"
+  >
     <button
       v-for="tab in tabs"
       :key="tab.id"

@@ -36,6 +36,11 @@
     background: var(--bg);
     font-family: var(--font);
   }
+
+  button,
+  .cursor-pointer {
+    touch-action: manipulation;
+  }
 }
 
 @keyframes popIn {

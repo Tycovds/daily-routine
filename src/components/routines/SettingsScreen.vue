@@ -26,7 +26,7 @@ function accentSwatch(hex: string): string {
       <p class="mt-1.5 font-meta text-[13px] text-muted">Contrast is checked for you. Unreadable pairs get corrected.</p>
     </div>
 
-    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6">
+    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-5" style="padding-bottom: calc(6rem + env(safe-area-inset-bottom))">
       <div class="font-meta text-[11px] tracking-[.08em] text-muted uppercase">Typeface</div>
       <div class="mt-2.5 grid grid-cols-2 gap-2">
         <button

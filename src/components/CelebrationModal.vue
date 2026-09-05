@@ -16,7 +16,7 @@ const confetti = Array.from({ length: 34 }, (_, i) => {
 
 <template>
   <div
-    class="absolute inset-0 z-10 flex items-center justify-center p-7"
+    class="absolute inset-0 z-30 flex items-center justify-center p-7"
     style="background: rgba(0,0,0,.55); animation: fadeIn .2s ease both"
   >
     <div class="pointer-events-none absolute inset-0 overflow-hidden">

@@ -103,7 +103,7 @@ function when(days: number): string {
       </div>
     </div>
 
-    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-4 pb-5">
+    <div class="min-h-0 flex-1 overflow-y-auto px-6 pt-4" style="padding-bottom: calc(6rem + env(safe-area-inset-bottom))">
       <div v-if="overdueRows.length" class="mb-2.5">
         <div class="flex items-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full bg-danger"></span>

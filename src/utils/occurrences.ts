@@ -33,6 +33,23 @@ export function daysInMonth(date: Date): number {
   return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
 }
 
+function weekdayDate(today: Date, dayIndex: number): Date {
+  const monday = new Date(today)
+  monday.setDate(today.getDate() - weekdayIndex(today))
+  monday.setDate(monday.getDate() + dayIndex)
+  return monday
+}
+
+function monthlyDate(today: Date, dom: number): Date {
+  return new Date(today.getFullYear(), today.getMonth(), dom)
+}
+
+// A routine only counts as overdue for a due date that occurred after it was created —
+// otherwise every newly added routine would start out overdue for periods before it existed.
+function existedBy(routine: Routine, dueDate: Date): boolean {
+  return isoDate(new Date(routine.id)) <= isoDate(dueDate)
+}
+
 export interface Occurrence {
   routine: Routine
   key: string
@@ -70,7 +87,7 @@ export function todaysOccurrences(
       for (const dayIndex of routine.days ?? []) {
         if (dayIndex === todayIdx) {
           todayRows.push({ routine, key: weeklyKey(routine, dayIndex, today), dayIndex })
-        } else if (dayIndex < todayIdx) {
+        } else if (dayIndex < todayIdx && existedBy(routine, weekdayDate(today, dayIndex))) {
           overdueRows.push({
             routine,
             key: weeklyKey(routine, dayIndex, today),
@@ -82,7 +99,11 @@ export function todaysOccurrences(
     } else if (routine.freq === 'month') {
       if (routine.dom === todayDom) {
         todayRows.push({ routine, key: monthlyKey(routine, today) })
-      } else if (routine.dom !== undefined && routine.dom < todayDom) {
+      } else if (
+        routine.dom !== undefined &&
+        routine.dom < todayDom &&
+        existedBy(routine, monthlyDate(today, routine.dom))
+      ) {
         overdueRows.push({ routine, key: monthlyKey(routine, today), lateDays: todayDom - routine.dom })
       }
     }

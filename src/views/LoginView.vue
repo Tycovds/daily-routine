@@ -1,5 +1,5 @@
 <template>
-    <div class="flex h-screen flex-col justify-center bg-bg p-6 font-theme">
+    <div class="flex h-dvh flex-col justify-center bg-bg p-6 font-theme">
         <h1 class="mb-4 text-2xl text-ink">Choose a username</h1>
         <form @submit.prevent="handleLogin">
             <input
